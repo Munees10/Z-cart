@@ -20,7 +20,13 @@
             <a class="nav-link" routerLink="user/whishlist"><button class="btn text-dark btn-outline-success"><i class="fa-solid fa-heart me-2 text-danger"></i>whishlist <span>0</span></button></a>
           </li>
           
-          <button routerLink="user/login" class="btn btn-dark ">  Login  </button>
+          <li *ngIf="!loginUsername"  class="nav-item active">
+             <a class="nav-link" routerLink="user/login"><button  class="btn btn-dark d-flex align-items-center">  <i class="fa-solid fa-user me-1"></i>Login </button></a>
+          </li>
+          <li *ngIf="loginUsername"  class="nav-item active">
+            <span class="fw-bolder text-primary d-flex align-items-center" >Welcome {{loginUsername}}<button (click)="logout()"  class="btn btn-outline-dark d-flex align-items-center ms-2">  <i class="fa-solid fa-user me-1"></i>Logout </button></span>
+         </li>
+          
         </ul>
       </div>
    

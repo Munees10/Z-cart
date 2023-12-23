@@ -4,28 +4,31 @@
         <div><img class="img-fluid" src="https://static.vecteezy.com/system/resources/thumbnails/016/900/444/small/online-dating-app-login-illustration-valentine-s-day-love-match-mobile-leaves-gradient-character-illustration-vector.jpg" alt="img"></div>
         <div class="p-5">
             <h3 class="bold">Login</h3>
-            <form >
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+    
                 <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="email"  name="email">
+                    <input type="text" class="form-control" placeholder="email"  formControlName="email" name="email">
                 </div>
                 <!-- invalid email -->
-                <div  class="mb-3 text-danger fw-bolder">
+                <div *ngIf="this.loginForm.get('email')?.errors&&this.loginForm.get('email')?.touched" class="mb-3 text-danger fw-bolder">
                     Invalid Email
                 </div>
 
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" >
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" name="password" >
                 </div>
                 <!-- invalid password -->
-                <div class="mb-3 text-danger fw-bolder">
+                <div  *ngIf="this.loginForm.get('password')?.errors&&this.loginForm.get('password')?.touched" class="mb-3 text-danger fw-bolder">
                     Invalid password
                 </div>
                 
                 <div class="mb-3">
-                   <button [disabled]="" type="submit" class="btn btn-primary">Login</button>
+                    <input value="Login" type="submit" class="btn btn-info">
                 </div>
         
             </form>
+            <p>New Here <a class="text-dark" routerLink="/user/register">Register</a></p>
+
         
         </div>
     </div>

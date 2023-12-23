@@ -1,1 +1,40 @@
-<p>register works!</p>
+<div class="d-flex align-items-center justify-content-center " style="height: 700px; width: 100%; background-color: #001861;">
+   
+    <div style="width: 600px; height: auto;" class=" shadow border m-5 bg-light  d-flex align-items-center justify-content-center">
+        <div><img class="img-fluid" src="https://static.vecteezy.com/system/resources/thumbnails/016/900/444/small/online-dating-app-login-illustration-valentine-s-day-love-match-mobile-leaves-gradient-character-illustration-vector.jpg" alt="img"></div>
+        <div class="p-5">
+            <h4 class="text-center bold">Welcome User</h4>
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="username"  formControlName="username" name="username">
+                </div>
+                <!-- invalid username -->
+                <div *ngIf="this.registerForm.get('username')?.errors&&this.registerForm.get('username')?.touched" class="mb-3 text-danger fw-bolder">
+                    *Invalid username
+                </div>
+    
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="email"  formControlName="email" name="email">
+                </div>
+                <!-- invalid email -->
+                <div *ngIf="this.registerForm.get('email')?.errors&&this.registerForm.get('email')?.touched" class="mb-3 text-danger fw-bolder">
+                    Invalid Email
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" name="password" >
+                </div>
+                <!-- invalid password -->
+                <div  *ngIf="this.registerForm.get('password')?.errors&&this.registerForm.get('password')?.touched" class="mb-3 text-danger fw-bolder">
+                    Invalid password
+                </div>
+                
+                <div class="mb-3">
+                   <input value="Register" type="submit" class="btn btn-info">
+                </div>
+            </form>
+            <p>Already a user click Here to <a class="text-dark" routerLink="/user/login">Login</a></p>
+        </div>
+    </div>
+    
+</div>
